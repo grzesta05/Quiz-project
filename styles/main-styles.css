@@ -1,21 +1,24 @@
 :root{
-    --rf: calc(1.5vw + 0.5vh); /*Responsive font - proportions have been chosen considering wrapping of fonts*/
+    --rf: clamp(1rem , 2vw , 2rem); /*Responsive font - proportions have been chosen considering wrapping of fonts*/
 }
 
 .main-activity{
-    height: 95vh;
+    height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    font-family: 'Source Sans Pro', sans-serif;
     background-image: url("https://i.natgeofe.com/n/80b97fe3-c0fb-40a6-a6a6-88b5c3bb9d30/01-lion-populations-nationalgeographic_1777804.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     counter-reset: question-number;
+    padding:0;
 }
 
 #question-space{
-    margin: 10vh 0 10vh 0;
-    min-height: 65vh;
+    transition:1s;
+    margin:auto;
+    min-height: 30vh;
     color:whitesmoke;
     text-align: center;
     padding: 1%;
@@ -28,8 +31,11 @@
 }
 ul{
     width:90%;
-    margin:auto;
+    margin: 5vh auto auto auto;
+    display: flex;
+    flex-wrap: wrap;
 }
+
 .answer::before{
     content: "Odpowiedź " counter(question-number) ": ";
 }
@@ -57,18 +63,24 @@ ul{
 .answer{
     margin:1%;
     counter-increment: question-number;
-    font-size: calc(var(--rf) * 1);
+    font-size: var(--rf);
     cursor: pointer;
+    word-wrap: break-word;
+    width: 45%;
 }
 
-#progress-bar{
-    border: 1px solid black;
+#progress-bar{  
     height: 5vh;
     display:flex;
+    justify-content: space-around;
     padding: 0;
+    width: 100%;
 }
 .block{
-    border: solid 1px rgb(24, 24, 24);
-    width:100%;
-    background-color: rgb(0, 0, 0);
+    transition: 0.2s all;
+    width: 100%;
+    border-radius: 1000px;
+    margin: 5px;
+    box-shadow: black 0px 0px 5px;
+    backdrop-filter: blur(5px);
 }
