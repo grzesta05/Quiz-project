@@ -13,6 +13,7 @@
     background-repeat: no-repeat;
     counter-reset: question-number;
     padding:0;
+    transition: 1s all;
 }
 
 #question-space{
@@ -83,4 +84,15 @@ ul{
     margin: 5px;
     box-shadow: black 0px 0px 5px;
     backdrop-filter: blur(5px);
+}
+
+.results{
+    justify-content: space-around;
+    display: flex;
+}
+.left, .right{
+    text-align: left;
+}
+.right{
+    color:green;
 }

@@ -34,7 +34,20 @@ function theEndOfTheGame()
     finished = true;
     document.getElementById("time").innerHTML = "";
     document.getElementById("question").innerHTML = 
-`Finished! <br /> Done ${answeredCorrectly} questions correctly out of ${questions.length} - ${Math.floor(100*answeredCorrectly/questions.length)}% <br /> Points: ${Math.floor(points)} <br /> Time: ${Math.floor(timeTotal/1000)} seconds`;
+`Finished!  
+<div class="results">
+<div>
+<div class="left">Done correctly: </div>
+ <div class="left">Points:</div>
+<div class= "left">Time:</div>
+</div>
+<div>
+<div class="right">${answeredCorrectly} - ${Math.floor(100*answeredCorrectly/questions.length)}% </div>  
+<div class="right">${Math.floor(points)} </div>
+<div class="right"> ${Math.floor(timeTotal/1000)} seconds </div>
+</div>
+</div>
+`
 }
 
 function isCorrect(answerNumber)
@@ -67,7 +80,7 @@ function questionHandler()
     {
         answerInjector(questionObj.answers[i], i)
     }
-    const time = Date.now();
+    var time = Date.now();
     var interval = window.setInterval(()=>{
         if(QuestionsCounter != questionAsked){
             window.clearInterval(interval);
