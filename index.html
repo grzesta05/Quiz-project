@@ -9,16 +9,46 @@
     <link rel="stylesheet" href="/styles/reset.css">
     <link rel="stylesheet" href="/styles/main-styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <style>
+        .hello {
+            font-size: 44px;
+            font-weight: bold;
+            line-height: normal;
+        }
+        .hello ~ h2 {
+            font-size: 24px;
+            line-height: normal;
+        }
+        .hello ~ a {
+            display: block;
+            width: 300px;
+            height: 100px;
+            text-decoration: none;
+            color: white;
+            background: orange;
+            backdrop-filter: blur(5px);
+            box-shadow: black 0 0 50px;
+            border-radius: 2vw;
+            font-size: 24px;
+            margin: 70px auto;
+            padding-top: 35px;
+            transition: all 0.3s;
+        }
+        .hello ~ a:hover {
+            background: white;
+            color: orange;
+        }
+    </style>
 </head>
 <body>
 <script src="scripts/questions.js"></script>
 
     <div class="container-fluid main-activity" style="height: 100vh;">
         <div class="container-sm" id="question-space">
-            Witamy na quizie o nie wiem w sumie czym ale się domyślam
-
+            <h1 class="hello">Witamy na quizie o Linuxie.</h1>
+            <h2>Przed tobą 10 pytań dotyczących na bieżąco rozwijającego się systemu Linux i jego dystrybucji.</h2>            
             <a href="pages/questionsPage.html">Przejdź do quizu</a>
         </div>
     </div>
@@ -26,7 +56,6 @@
     <div class="container-sm" id="progress-bar" style="display: none;">
         <!--generates divs with proper color as a progress bar-->
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

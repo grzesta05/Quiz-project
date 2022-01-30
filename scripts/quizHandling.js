@@ -53,6 +53,13 @@ function theEndOfTheGame()
 function isCorrect(answerNumber)
 {
     answered = true;
+    if (QuestionsCounter != questions.length - 1)
+    {document.querySelector("#time-bar > div").style.animationName = "none";
+    document.querySelector("#time-bar > div").offsetHeight;
+    document.querySelector("#time-bar > div").style.animationName = "timer";}
+    else {
+        document.querySelector("#time-bar > div").style.animationName = "none";
+    }
     if(answerNumber == questions[QuestionsCounter].correct_answer_id)
     {
         points += 200;
@@ -89,10 +96,18 @@ function questionHandler()
         const minutes = Math.floor((Date.now()-time)/60000);
         const seconds = Math.floor((Date.now()-time)/1000) - 60*Math.floor((Date.now()-time)/60000);
         document.getElementById("time").innerHTML = `${minutes}:` + (seconds < 10? "0" : "") + `${seconds}`;
+        if (seconds == 10) {
+            answered = true;
+            document.querySelector("#time-bar > div").style.animationName = "none";
+            document.querySelector("#time-bar > div").offsetHeight;
+            document.querySelector("#time-bar > div").style.animationName = "timer";
+            document.getElementById(`block${QuestionsCounter}`).style= `background-color: rgb(255,0,0);`;  
+            QuestionsCounter++;
+            questionHandler();
+        }
         timeForQuestion = Date.now() - time;
         }
     }, 1000);
     }
 }
-
 

@@ -7,7 +7,7 @@
     display: flex;
     flex-direction: column;
     font-family: 'Source Sans Pro', sans-serif;
-    background-image: url("https://i.natgeofe.com/n/80b97fe3-c0fb-40a6-a6a6-88b5c3bb9d30/01-lion-populations-nationalgeographic_1777804.jpg");
+    background-image: url("https://images.pling.com/img/00/00/50/91/40/1304700/fbd1f1f39015f25f6de6b1d003ee7b518f15.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -26,6 +26,7 @@
     backdrop-filter: blur(5px);
     box-shadow: black 0 0 50px;
     border-radius: 2vw;
+    text-shadow: 1px -1px 3px #000000;
 }
 #time, #question{
     font-size: calc(var(--rf) * 1.5);
@@ -77,6 +78,30 @@ ul{
     padding: 0;
     width: 100%;
 }
+
+#time-bar{
+    width: 100%;
+    height: 2vh;
+    overflow: hidden;
+}
+
+#time-bar > div {
+    background: orange;
+    width: 100%;
+    height: 100%;
+    animation: timer 10s forwards linear;
+    transform-origin: left center;
+}
+
+@keyframes timer{
+    from{
+        transform: scaleX(1);
+    }
+    to{
+        transform: scaleX(0);
+    }
+}
+
 .block{
     transition: 0.2s all;
     width: 100%;
