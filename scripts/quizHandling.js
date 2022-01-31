@@ -18,7 +18,7 @@ function answerInjector(answer, number)
 
 function clearContainers()
 {
-    document.getElementById("time").innerHTML = "0:00";
+    document.getElementById("time").innerHTML = "0:10";
     document.getElementById("answersSpace").innerHTML = "";
     document.getElementById("question").innerHTML = "";
 }
@@ -52,7 +52,6 @@ function theEndOfTheGame()
 
 function isCorrect(answerNumber)
 {
-    answered = true;
     if (QuestionsCounter != questions.length - 1)
     {document.querySelector("#time-bar > div").style.animationName = "none";
     document.querySelector("#time-bar > div").offsetHeight;
@@ -62,10 +61,10 @@ function isCorrect(answerNumber)
     }
     if(answerNumber == questions[QuestionsCounter].correct_answer_id)
     {
-        points += 200;
-        points += (800 / (1+ timeForQuestion/20000)); // max 800 points for time
+        points += 500;
+        points += 500 - (500 * timeForQuestion/10000); // max 800 points for time
         answeredCorrectly++;
-        document.getElementById(`block${QuestionsCounter}`).style= `background-color: rgb(${255 - (255 * (800/(1+ timeForQuestion/5000))/800)},255,0);`;
+        document.getElementById(`block${QuestionsCounter}`).style= `background-color: rgb(${255 * timeForQuestion/10000},255,0);`;
     }else{
         document.getElementById(`block${QuestionsCounter}`).style= `background-color: rgb(255,0,0);`;  
     }
@@ -95,15 +94,13 @@ function questionHandler()
         }else{
         const minutes = Math.floor((Date.now()-time)/60000);
         const seconds = Math.floor((Date.now()-time)/1000) - 60*Math.floor((Date.now()-time)/60000);
-        document.getElementById("time").innerHTML = `${minutes}:` + (seconds < 10? "0" : "") + `${seconds}`;
+        document.getElementById("time").innerHTML = `${minutes}:` + (seconds < 10? "0" : "") + `${10 - seconds}`;
         if (seconds == 10) {
-            answered = true;
             document.querySelector("#time-bar > div").style.animationName = "none";
             document.querySelector("#time-bar > div").offsetHeight;
             document.querySelector("#time-bar > div").style.animationName = "timer";
             document.getElementById(`block${QuestionsCounter}`).style= `background-color: rgb(255,0,0);`;  
-            QuestionsCounter++;
-            questionHandler();
+            isCorrect();
         }
         timeForQuestion = Date.now() - time;
         }
